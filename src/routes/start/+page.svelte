@@ -11,5 +11,14 @@
             eng_title: "Add your details to receive accurate results",
         }}
     />
-    <Information />
+    <div><Information /></div>
+    <div id="next_button_container">
+        <button id="next_button" class="hfoot_button">Next</button>
+    </div>
 </div>
+
+<style>
+    .page_container {
+        gap: 5vh;
+    }
+</style>
