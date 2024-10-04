@@ -11,8 +11,8 @@
     </h1>
     <span id="main_eng_title">Welcome. This is "HFOOT," an adiabatic anastomosis testing platform.</span>
     <div id="main_button_container">
-        <button class="hfoot_button" id="main_button_start" on:click={start_event}>시작하기</button>
-        <button class="hfoot_button" id="main_button_explain">질병 알아보기</button>
-        <button class="hfoot_button" id="main_button_search">코드 번호 검색하기</button>
+        <button class="hfoot_button page_button" id="main_button_start" on:click={start_event}>시작하기</button>
+        <button class="hfoot_button page_button" id="main_button_explain">질병 알아보기</button>
+        <button class="hfoot_button page_button" id="main_button_search">코드 번호 검색하기</button>
     </div>
 </div>

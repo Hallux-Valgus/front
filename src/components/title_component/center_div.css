@@ -5,8 +5,9 @@
     flex-direction: column;
 
     width:100wh;
-    /* background-color: violet; */
     margin: 0 auto;
+
+    gap: 3vh;
 }
 .title{
     margin:0vh;

@@ -43,8 +43,8 @@
     </div>
 
     <div class="button_container">
-        <button id="back_button" class="hfoot_button" on:click={to_back}>뒤로가기</button>
-        <button id="next_button" class="hfoot_button" on:click={to_next}>Next</button>
+        <button id="back_button" class="hfoot_button page_button" on:click={to_back}>뒤로가기</button>
+        <button id="next_button" class="hfoot_button page_button" on:click={to_next}>Next</button>
     </div>
 </div>
 

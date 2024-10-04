@@ -4,7 +4,7 @@
     import Information from "./Information.svelte";
 
     const to_next = () => {
-        window.location.href="/code";
+        window.location.href = "/code";
     };
 </script>
 
@@ -17,7 +17,8 @@
     />
     <div><Information /></div>
     <div id="next_button_container">
-        <button id="next_button" class="hfoot_button" on:click={to_next}>Next</button>
+        <button id="next_button" class="hfoot_button page_button" on:click={to_next}
+            >Next</button>
     </div>
 </div>
 
