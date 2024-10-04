@@ -1,5 +1,8 @@
 <script>
     import CenterTitle from "$components/title_component/CenterTitle.svelte";
+    const to_next = () => {
+        window.location.href = "/upload";
+    };
 </script>
 
 <div class="page_container">
@@ -24,7 +27,7 @@
         </div>
     </div>
     <div id="button_container">
-        <button class="hfoot_button page_button">넘어가기</button>
+        <button class="hfoot_button page_button" on:click={to_next}>넘어가기</button>
     </div>
 </div>
 
