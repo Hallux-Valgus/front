@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    import { writable } from "svelte/store";
     import CenterTitle from "$components/title_component/CenterTitle.svelte";
 
     let username: string = "";
