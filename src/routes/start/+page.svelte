@@ -26,4 +26,11 @@
     .page_container {
         gap: 5vh;
     }
+
+    #next_button_container{
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+        width:30vw;
+    }
 </style>

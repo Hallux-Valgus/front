@@ -47,5 +47,6 @@
         border-radius: 5px;
         padding: 0.5vh 1vw;
         color: rgb(100, 100, 100);
+        width: 30vw;
     }
 </style>

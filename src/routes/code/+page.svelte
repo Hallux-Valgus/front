@@ -1,8 +1,20 @@
 <script lang="ts">
+    import {onMount} from "svelte";
     import CenterTitle from "$components/title_component/CenterTitle.svelte";
-    let annoymous_code: string = "354846e7-a177-46a3-bfe0-10e79fdd98a2";
+    import {fetchUUID} from "./GetUserId";
+    let uuid_code: string = "";
     let gender: string = "남성";
     let age: number = 30;
+
+    async function getUUID(){
+        try{
+            uuid_code = await fetchUUID();
+        }catch(error){
+            console.error("Fail to Load UUID");
+        }
+    }
+
+    onMount(() => {getUUID();});
 
     function copyToClipboard(): void {
         navigator.clipboard
@@ -35,7 +47,7 @@
 
     <div id="code_container">
         <div style="display:flex; flex-direction:row; align-itmes: flex-start;">
-            <span id="code">Code : {annoymous_code}</span>
+            <span id="code">Code : {uuid_code}</span>
             <button id="copy_button" on:click={copyToClipboard}>복사</button>
         </div>
         <p id="eng_explain">An adiabatic anastomosis Test User</p>
