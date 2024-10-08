@@ -2,9 +2,16 @@
     import "./start_page.css";
     import CenterTitle from "$components/title_component/CenterTitle.svelte";
     import Information from "./Information.svelte";
+    import { CreateUser } from "./CreateUser";
+
+    let age: string = "";
+    let gender: string = "";
 
     const to_next = () => {
-        window.location.href = "/code";
+        CreateUser(gender, parseInt(age)).then((code: string) =>
+            localStorage.setItem("code", code),
+        );
+        window.location.href="/code";
     };
 </script>
 
@@ -15,10 +22,13 @@
             eng_title: "Add your details to receive accurate results",
         }}
     />
-    <div><Information /></div>
+    <div><Information bind:gender bind:age /></div>
     <div id="next_button_container">
-        <button id="next_button" class="hfoot_button page_button" on:click={to_next}
-            >Next</button>
+        <button
+            id="next_button"
+            class="hfoot_button page_button"
+            on:click={to_next}>Next</button
+        >
     </div>
 </div>
 
@@ -27,10 +37,10 @@
         gap: 5vh;
     }
 
-    #next_button_container{
-        display:flex;
+    #next_button_container {
+        display: flex;
         flex-direction: row;
         justify-content: center;
-        width:30vw;
+        width: 30vw;
     }
 </style>

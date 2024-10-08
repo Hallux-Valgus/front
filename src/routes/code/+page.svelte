@@ -1,31 +1,28 @@
 <script lang="ts">
-    import {onMount} from "svelte";
+    import { onMount } from "svelte";
     import CenterTitle from "$components/title_component/CenterTitle.svelte";
-    import {fetchUUID} from "./GetUserId";
-    let uuid_code: string = "";
+    import { fetchUUID } from "./GetUserId";
+    let uuid_code: string | null = "";
     let gender: string = "남성";
     let age: number = 30;
 
-    async function getUUID(){
-        try{
-            uuid_code = await fetchUUID();
-        }catch(error){
-            console.error("Fail to Load UUID");
-        }
-    }
-
-    onMount(() => {getUUID();});
+    onMount(() => {
+        uuid_code = localStorage.getItem("code");
+        console.log(`from start: ${uuid_code}`);
+    });
 
     function copyToClipboard(): void {
-        navigator.clipboard
-            .writeText(annoymous_code)
+        if(uuid_code !== null){
+            navigator.clipboard
+            .writeText(uuid_code)
             .then(() => {
-                console.log("복사 성공", annoymous_code);
+                console.log("복사 성공", uuid_code);
                 alert("코드가 복사됐습니다");
             })
             .catch((err: any) => {
                 console.error("복사 실패");
             });
+        }
     }
 
     const to_back = () => {
@@ -55,8 +52,16 @@
     </div>
 
     <div class="button_container">
-        <button id="back_button" class="hfoot_button page_button" on:click={to_back}>뒤로가기</button>
-        <button id="next_button" class="hfoot_button page_button" on:click={to_next}>Next</button>
+        <button
+            id="back_button"
+            class="hfoot_button page_button"
+            on:click={to_back}>뒤로가기</button
+        >
+        <button
+            id="next_button"
+            class="hfoot_button page_button"
+            on:click={to_next}>Next</button
+        >
     </div>
 </div>
 
