@@ -10,12 +10,13 @@
 		"sourceMap": true,
 		"strict": true,
 		"moduleResolution": "bundler",
-
 		"baseUrl": ".",
-		"paths":{
-			"$components/*": ["src/components/*"]
+		"paths": {
+			"$components/*": [
+				"src/components/*"
+			],
 		}
-	}
+	},
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
 	// except $lib which is handled by https://kit.svelte.dev/docs/configuration#files
 	//

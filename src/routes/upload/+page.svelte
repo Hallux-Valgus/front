@@ -25,6 +25,10 @@
 
 <style>
     .page_container{
-        gap: 3vh;
+        gap: 5vh;
+    }
+
+    #upload_container{
+        width:30vw;
     }
 </style>
