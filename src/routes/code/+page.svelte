@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import CenterTitle from "$components/title_component/CenterTitle.svelte";
-    import { fetchUUID } from "./GetUserId";
+
     let uuid_code: string | null = "";
     let gender: string = "남성";
     let age: number = 30;
