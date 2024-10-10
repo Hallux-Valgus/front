@@ -1,13 +1,45 @@
-<script>
-      import {onMount} from "svelte";
+<script lang="ts">
+      import { onMount } from "svelte";
       import CenterTitle from "$components/title_component/CenterTitle.svelte";
-      import {upload_image} from "./UploadImage";
+      import { upload_image } from "./UploadImage";
+
+      let selectedFile: File | null = null;
 
       onMount(() => {
             console.log(upload_image());
       });
-      const to_next = () => {
-            window.location.href = "/code";
+
+      function handleFileChange(event: Event) {
+            const target = event.target as HTMLInputElement;
+            if (target.files && target.files.length > 0)
+                  selectedFile = target.files[0];
+      }
+
+      async function to_next(){
+            if (!selectedFile) {
+                  alert("파일을 선택해주세요");
+                  return;
+            }
+
+            const formData = new FormData();
+            formData.append("image", selectedFile);
+            formData.append("code", localStorage.getItem("code")!);
+
+            try{
+                  const response = await fetch("http://localhost:8000/api/v1/upload", {
+                        method:"POST",
+                        body: formData
+                  });
+
+                  if(response.ok){
+                        alert("파일 전송이 성공했습니다");
+                        window.location.href = "/result";
+                  }else{
+                        alert("파일 전송에 실패했습니다");
+                  }
+            }catch(error){
+                  console.error(error)
+            }
       };
 </script>
 
@@ -20,11 +52,17 @@
       />
       <div id="upload_container">
             <label for="formFile">Upload Photo</label>
-            <input type="file" class="form-control" />
+            <input
+                  type="file"
+                  class="form-control"
+                  on:change={handleFileChange}
+            />
       </div>
 
       <div id="button_container">
-            <button class="hfoot_button page_button">Next</button>
+            <button class="hfoot_button page_button" on:click={to_next}
+                  >Next</button
+            >
       </div>
 </div>
 
