@@ -14,7 +14,7 @@
     };
 </script>
 
-<div class="page_container">
+<div class="result_container">
     <CenterTitle
         title={{
             head_title: "검사 결과를 사진으로 받아보세요",
@@ -28,7 +28,7 @@
                 type="email"
                 class="form-control"
                 id="email_input"
-                style="width:175px;"
+                style="width:200px;"
             />
             <span style="font-size:25px;">@</span>
             <select
@@ -42,7 +42,7 @@
                 <option value="hanmail.net">hanmail.net</option>
             </select>
         </div>
-        <button class="hfoot_button" style="height:100%;">보내기</button>
+        <button class="btn btn-dark btn-lg" style="height:100%;">보내기</button>
     </div>
 
     <div id="result_image_container">
@@ -94,8 +94,15 @@
 </div>
 
 <style>
-    .page_container {
-        margin: 20vh 0vw;
+    .result_container {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: auto;
+
+        margin: 10vh 0vw;
         gap: 3vh;
     }
     #result_act_column {
