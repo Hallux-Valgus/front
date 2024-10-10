@@ -1,11 +1,17 @@
 <script lang="ts">
+    import { onMount } from "svelte";
     import CenterTitle from "$components/title_component/CenterTitle.svelte";
     import Cell from "$components/cell_component/ResultCell.svelte";
-    let image_url: string =
-        "https://imgnews.pstatic.net/image/001/2024/10/05/PYH2024100502390001300_P4_20241005164912420.jpg?type=w647";
-    const to_home = function():void{
-        window.location.href="/";
-    }
+    let image_url:string = "";
+    onMount(() => {
+        let image_path: string = localStorage.getItem("image_url")!; 
+        image_url = `http://localhost:8000${image_path}`;
+        console.log(image_url)
+    });
+
+    const to_home = function (): void {
+        window.location.href = "/";
+    };
 </script>
 
 <div class="page_container">
@@ -81,7 +87,9 @@
         </div>
     </div>
     <div id="home_button_container">
-        <button class="hfoot_button" on:click={to_home}>Home으로 돌아가기</button>
+        <button class="hfoot_button" on:click={to_home}
+            >Home으로 돌아가기</button
+        >
     </div>
 </div>
 
@@ -97,13 +105,12 @@
         width: 900px;
         height: auto;
     }
-    #home_button_container{
+    #home_button_container {
         width: 900px;
     }
-    #home_button_container button{
+    #home_button_container button {
         width: 900px;
         height: 40px;
-
     }
     .result_act_row {
         display: flex;

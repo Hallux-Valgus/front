@@ -31,8 +31,12 @@
                         body: formData
                   });
 
+                  const data = await response.json()
+                  console.log(data)
+
                   if(response.ok){
                         alert("파일 전송이 성공했습니다");
+                        localStorage.setItem("image_url", data.image_path)
                         window.location.href = "/result";
                   }else{
                         alert("파일 전송에 실패했습니다");

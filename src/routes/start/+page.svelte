@@ -7,11 +7,11 @@
     let age: string = "";
     let gender: string = "";
 
-    const to_next = () => {
-        CreateUser(gender, parseInt(age)).then((code: string) =>
-            localStorage.setItem("code", code),
-        );
-        window.location.href="/code";
+    async function to_next(){
+        let get_code:string = await CreateUser(gender, parseInt(age))
+        if(get_code){
+            window.location.href="/code";
+        }
     };
 </script>
 

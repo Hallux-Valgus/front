@@ -50,5 +50,7 @@ export async function CreateUser(
 
     const result_account = await response.json()
 
+    localStorage.setItem("code", result_account.code)
+
     return result_account.code
 }
