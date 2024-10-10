@@ -133,7 +133,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 5vw;
+        gap: 3vw;
 
         padding: 1vh 5vw;
     }
