@@ -1,5 +1,6 @@
 <script lang="ts">
     import "./main_page.css";
+
     const start_event = () => {
         window.location.href="/start"
     }
