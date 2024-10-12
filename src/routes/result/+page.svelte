@@ -2,12 +2,42 @@
     import { onMount } from "svelte";
     import CenterTitle from "$components/title_component/CenterTitle.svelte";
     import Cell from "$components/cell_component/ResultCell.svelte";
-    let image_url:string = "";
+
+    let image_url: string = "";
     onMount(() => {
-        let image_path: string = localStorage.getItem("image_url")!; 
+        let image_path: string = localStorage.getItem("image_url")!;
         image_url = `http://localhost:8000${image_path}`;
-        console.log(image_url)
+        console.log(image_url);
     });
+
+    let email_input: string = "";
+    let email_domain: string = "";
+
+    async function send_mail() {
+        let user_mail = `${email_input}@${email_domain}`;
+        const response = await fetch("http://localhost:8000/api/v1/send/mail", {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                "email":user_mail,
+                "code": "test_code from jorimjoram"
+            })
+            //localStorage.getItem("code")
+        });
+
+        const data = await response.json()
+        if(response.ok){
+            if (data.msg == "success"){
+                alert("메일 전송에 성공했습니다. 메일을 확인해주세요");
+            }else{
+                alert("메일 전송에 실패했습니다. 다시 확인해주세요");
+            }
+        }else{
+            alert("메일 전송에 실패했습니다. 다시 시도해주세요")
+        }
+    }
 
     const to_home = function (): void {
         window.location.href = "/";
@@ -29,6 +59,7 @@
                 class="form-control"
                 id="email_input"
                 style="width:200px;"
+                bind:value={email_input}
             />
             <span style="font-size:25px;">@</span>
             <select
@@ -36,13 +67,18 @@
                 name="email_domian"
                 id="email_domain"
                 style="width: 200px"
+                bind:value={email_domain}
             >
                 <option value="naver.com">naver.com</option>
                 <option value="google.com">google.com</option>
                 <option value="hanmail.net">hanmail.net</option>
             </select>
         </div>
-        <button class="btn btn-dark btn-lg" style="height:100%;">보내기</button>
+        <button
+            class="btn btn-dark btn-lg"
+            style="height:100%;"
+            on:click={send_mail}>보내기</button
+        >
     </div>
 
     <div id="result_image_container">
@@ -95,7 +131,7 @@
 
 <style>
     .result_container {
-        display:flex;
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
