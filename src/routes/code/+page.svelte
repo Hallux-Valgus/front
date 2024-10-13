@@ -2,13 +2,27 @@
     import { onMount } from "svelte";
     import CenterTitle from "$components/title_component/CenterTitle.svelte";
 
+    interface UserData{
+        gender:string;
+        age:number;
+        code:string;
+    }
     let uuid_code: string | null = "";
     let gender: string = "남성";
     let age: number = 30;
 
-    onMount(() => {
+    onMount(async () => {
         uuid_code = localStorage.getItem("code");
-        console.log(`from start: ${uuid_code}`);
+        const response = await fetch(`http://localhost:8000/api/v1/get/user?code=${uuid_code}`,{
+            method:"GET",
+        });
+
+        const data:UserData = await (response.json())
+
+        console.log(`from start: ${uuid_code}`);        
+        
+        gender = data.gender
+        age = data.age
     });
 
     function copyToClipboard(): void {

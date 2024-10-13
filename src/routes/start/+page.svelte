@@ -1,5 +1,6 @@
 <script lang="ts">
     import "./start_page.css";
+    import {onMount} from "svelte"
     import CenterTitle from "$components/title_component/CenterTitle.svelte";
     import Information from "./Information.svelte";
     import { CreateUser } from "./CreateUser";

@@ -4,6 +4,7 @@
         head_content: string;
         eng_content: string;
         main_content: string;
+        hyper_link:string;
     };
 </script>
 
@@ -11,9 +12,9 @@
     <div class="inner_cell">
         <img src={content.icon} alt={content.icon} id="cell_icon" />
         <div class="content_container">
-            <h3>{content.head_content}</h3>
+            <h3><a href="{content.hyper_link}" style="text-decoration:none; color:black">{content.head_content}</a></h3>
             <p>{content.eng_content}</p>
-            <p>{content.main_content}</p>
+            <p style="width:300px;">{@html content.main_content}</p>
         </div>
     </div>
 </div>

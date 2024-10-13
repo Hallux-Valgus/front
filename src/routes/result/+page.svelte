@@ -88,36 +88,40 @@
         <div class="result_act_row">
             <Cell
                 content={{
-                    icon: image_url,
+                    icon: "/icons/hospital.png",
                     head_content: "병원 알아보기",
                     eng_content: "Hospital information",
-                    main_content: "Get Recommedations for hospital information",
+                    main_content: "Recommedations for hospital",
+                    hyper_link: "https://map.naver.com/p/search/정형외과?c=13.32,0,0,2,dh"
                 }}
             />
             <Cell
                 content={{
-                    icon: image_url,
-                    head_content: "병원 알아보기",
-                    eng_content: "Hospital information",
-                    main_content: "Get Recommedations for hospital information",
+                    icon: "/icons/medical.png",
+                    head_content: "치료 도구",
+                    eng_content: "Treatment Brace",
+                    main_content: "Recommedations for treatment",
+                    hyper_link:"https://search.shopping.naver.com/search/all?query=무지외반증교정기"
                 }}
             />
         </div>
         <div class="result_act_row">
             <Cell
                 content={{
-                    icon: image_url,
-                    head_content: "병원 알아보기",
-                    eng_content: "Hospital information",
-                    main_content: "Get Recommedations for hospital information",
+                    icon: "/icons/exercise.png",
+                    head_content: "예방 운동법",
+                    eng_content: "Preventive Exercise",
+                    main_content: "Follow the precautionary exercise",
+                    hyper_link:"https://www.youtube.com/results?search_query=무지외반증+운동"
                 }}
             />
             <Cell
                 content={{
-                    icon: image_url,
-                    head_content: "병원 알아보기",
-                    eng_content: "Hospital information",
-                    main_content: "Get Recommedations for hospital information",
+                    icon: "/icons/information.png",
+                    head_content: "질병 알아보기",
+                    eng_content: "Information of Hallux Valgus",
+                    main_content: "You can view the results here in detail",
+                    hyper_link:"/prevents"
                 }}
             />
         </div>
@@ -158,6 +162,7 @@
     .result_act_row {
         display: flex;
         flex-direction: row;
+        align-items: flex-start;
         gap: 2vh;
     }
 
